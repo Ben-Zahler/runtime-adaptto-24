@@ -1,0 +1,37 @@
+{
+  "project": {
+    "id": "4566206088345118790",
+    "name": "PartnerPortalTest",
+    "title": "Partner Portal EDS Test Auth Service Dev",
+    "description": "Project to experiment with IO runtime for EDS services.",
+    "org": {
+      "id": "14257",
+      "name": "Adobe Corp",
+      "ims_org_id": "9E1005A551ED61CA0A490D45@AdobeOrg"
+    },
+    "workspace": {
+      "id": "4566206088345199880",
+      "name": "AdaptToDemo",
+      "title": "AdaptToDemo",
+      "description": "",
+      "action_url": "https://14257-partnerportaltest-adapttodemo.adobeioruntime.net",
+      "app_url": "https://14257-partnerportaltest-adapttodemo.adobeio-static.net",
+      "details": {
+        "credentials": [],
+        "services": [],
+        "runtime": {
+          "namespaces": [
+            {
+              "name": "14257-partnerportaltest-adapttodemo",
+              "auth": "2e3a67da-1d0d-4cfc-a159-f3d5d47c98db:7mE7At0320M4Y268EROUk2XQSfgCnaVicokQS8DflitALMD6FDClAXrLETvP2Df6"
+            }
+          ]
+        },
+        "events": {
+          "registrations": []
+        },
+        "mesh": {}
+      }
+    }
+  }
+}

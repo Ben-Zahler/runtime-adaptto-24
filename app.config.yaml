@@ -1,0 +1,24 @@
+application:
+  actions: actions
+  web: web-src
+  runtimeManifest:
+    packages:
+      AdapttoService:
+        license: Apache-2.0
+        actions:
+          signIn:
+            function: actions/sign-in/index.js
+            web: 'yes'
+            runtime: nodejs:18
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              final: true
+          verifyUser:
+            function: actions/verifyUser/index.js
+            web: 'yes'
+            runtime: nodejs:18
+            inputs:
+              LOG_LEVEL: debug
+            annotations:
+              final: true
