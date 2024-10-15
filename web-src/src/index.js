@@ -2,10 +2,48 @@
 * <license header>
 */
 
-import {LitElement, html} from 'lit';
+import {LitElement, html, css} from 'lit';
+
+const SignInStyles = css`
+  .sign-in-form {
+    margin: 20px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sign-in-form button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #3879e0;
+    color: #FFFFFF;
+    margin-top: 10px;
+  }
+
+  .sign-in-form button:hover {
+    background: #2b5cab;
+  }
+  .sign-in-form input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+`;
 
 
 export class SignIn extends LitElement {
+  static styles = [
+    SignInStyles,
+  ];
+
   static properties = {
     _listItems: {state: true},
   };
@@ -16,9 +54,10 @@ export class SignIn extends LitElement {
 
   render() {
     return html`
-      <h2>Please enter your Name to sign in</h2>
-      <input id="name" aria-label="Your Name">
-      <button @click=${this.signIn}>Sign in</button>
+      <form @submit=${this.signIn} class='sign-in-form'> 
+        <input id="name" aria-label="Your Name" placeholder="Your Name">
+        <button type="submit">Sign in</button>
+      </form>
     `;
   }
 
@@ -26,10 +65,12 @@ export class SignIn extends LitElement {
     return this.renderRoot?.querySelector('#name') ?? null;
   }
 
-  async signIn() {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    let forbiddenPage = 'https://www.apollopoll.com/forbidden';
+  async signIn(e) {
+    e.preventDefault();
+    const forbiddenPage = 'https://www.apollopoll.com/forbidden';
+    const homePage = 'https://www.apollopoll.com';
+    const currentUrl = new URL(window.location.href);
+    const afterSignIn = currentUrl.searchParams.get('redirect');
 
     fetch("https://www.apollopoll.com/api/v1/web/AdapttoService/signIn", {
       method: "POST",
@@ -42,10 +83,15 @@ export class SignIn extends LitElement {
       }
     }).then(response => {
       console.log(`url is ${response.url}`, response)
-      if (response.ok) {
-        window.location.reload();
+      if (!response.ok) {
+        window.location.assign(forbiddenPage);
+        return;
+      }
+
+      if (afterSignIn) {
+        window.location.assign(afterSignIn);
       } else {
-        window.location.href = forbiddenPage;
+        window.location.assign(homePage);
       }
     })
   }

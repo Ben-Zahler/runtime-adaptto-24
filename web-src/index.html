@@ -1,7 +1,7 @@
 <!-- <license header> -->
 
   <!DOCTYPE html>
-  <html lang="en" class="spectrum spectrum--medium spectrum--light">
+  <html lang="en">
 
   <head>
     <meta charset="UTF-8">
@@ -13,17 +13,19 @@
     <link rel="stylesheet" href="https://unpkg.com/@spectrum-css/vars/dist/spectrum-global.css">
     <link rel="stylesheet" href="https://unpkg.com/@spectrum-css/typography/index.css">
     <link rel="stylesheet" href="index.css">
-  <title>AdaptTo Dummy Login</title>
+  <title>AdaptTo Login</title>
   <script src="./src/utils.js" type="module"></script>
   <script src="./src/index.js" type="module"></script>
 </head>
 <body>
-  <h1>Welcome to the Authentication Service for the AdaptTo 2024</h1>
-  <h2>Please enter your favourite user name</h2>
-  <ol>
-    <li>any user will get access to protected resources</li>
-    <li>user "Jack" also has access to the secret page</li>
-  </ol>
-  <demo-signin></demo-signin>
+  <div class='sign-in-container'>
+    <h1>Welcome to the Authentication Service for the AdaptTo 2024</h1>
+    <h2>Please enter your user name</h2>
+    <ol>
+      <li>Any user will get access to protected resources</li>
+      <li>User "<strong>Jack</strong>" also has access to the <strong>secret</strong> page</li>
+    </ol>
+    <demo-signin></demo-signin>
+  </div>
 </body>
 </html>
